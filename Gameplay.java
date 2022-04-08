@@ -8,6 +8,7 @@ import javax.swing.*;
 public class Gameplay extends JPanel implements ActionListener, KeyListener {
 
     boolean gameStart = false;
+    int totalBricks = 21;
     Timer timer;
     int delay = 6;
     int score = 0;
@@ -18,7 +19,10 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener {
     int ballXDirection = -1;
     int ballYDirection = -2;
 
+    MapGenerator mapGenerator;
+
     public Gameplay() {
+        mapGenerator = new MapGenerator(3, 7);
         addKeyListener(this);
         setFocusTraversalKeysEnabled(false);
         setFocusable(true);
@@ -30,6 +34,8 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener {
         g.setColor(Color.black);
         g.fillRect(1, 1, 692, 592);
 
+
+        mapGenerator.draw((Graphics2D)g);
         g.setColor(Color.yellow);
         g.fillRect(0, 0, 3, 592);
         g.fillRect(0, 0, 692, 3);
